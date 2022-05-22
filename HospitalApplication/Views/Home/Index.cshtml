@@ -1,0 +1,24 @@
+﻿@model List<HospitalApplication.Models.Hospital>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@Html.ActionLink("Create New Hospital", "Create")
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Max Beds</td>
+    </tr>
+    @{
+        foreach(var hospital in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(hospital.Name, "Read", new {id=hospital.Id})</td>
+                <td>@hospital.MaxBeds</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id=hospital.Id}) | @Html.ActionLink("Delete", "Delete", new {id=hospital.Id})
+                </td>
+            </tr>
+        }
+    }
+</table>

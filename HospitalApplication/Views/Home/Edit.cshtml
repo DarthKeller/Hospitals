@@ -1,0 +1,94 @@
+﻿@model HospitalApplication.Models.Hospital
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.Name</h1>
+
+<hr />
+        <form asp-action="Edit">
+<div class="row">
+    <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxBeds" class="control-label"></label>
+                <input asp-for="MaxBeds" class="form-control" />
+                <span asp-validation-for="MaxBeds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        
+    </div>
+
+    <div class="col-md-4">
+    <div class="form-group">
+        <label class="control-label">Specialties</label>
+        <select class="form-control" asp-for="dropDownSpecialties">
+                @{
+                    foreach(var s in Model.dropDownSpecialties)
+                    {
+                        if (s.Selected)
+                        {
+                        @: <option value="@s.Value" selected="@s.Selected">@s.Text</option>    
+                        }
+                        else
+                        {
+                            @: <option value="@s.Value">@s.Text</option>
+                        }
+
+                    }
+                }
+        </select>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="form-group">
+        <label class="control-label">Specialties</label>
+        <select class="form-control" asp-for="dropDownProviders">
+                @{
+                    foreach(var s in Model.dropDownProviders)
+                    {
+                        if (s.Selected)
+                        {
+                        @: <option value="@s.Value" selected="@s.Selected">@s.Text</option>    
+                        }
+                        else
+                        {
+                            @: <option value="@s.Value">@s.Text</option>
+                        }
+
+                    }
+                }
+        </select>
+    </div>
+    </div>
+</div>
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

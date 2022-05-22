@@ -1,0 +1,75 @@
+﻿@model HospitalApplication.Models.Hospital
+
+@{
+    ViewData["Title"] = "Read";
+}
+
+<h1>@Model.Name Information</h1>
+
+<div>
+    
+    
+    <dl class="row">
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaxBeds)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaxBeds)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+    </dl>
+
+    @{
+        if (Model.Specialties != null && Model.Specialties.Any())
+        {
+            <h4>Specialties</h4>
+            <ul>
+                @{
+                    foreach (var specialty in Model.Specialties)
+                    {
+                        @: <li>@specialty.Name</li>
+                    }
+                }
+            </ul>
+        }
+    }
+
+    @{
+        if(Model.PreferredProviders != null && Model.PreferredProviders.Any())
+        {
+            <h4>Preferred Providers</h4>
+            <ul>
+                @{
+                    foreach(var provider in Model.PreferredProviders)
+                    {
+                        @: <li>@provider.Name</li>
+                    }
+                }
+            </ul>
+        }
+
+    }
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
